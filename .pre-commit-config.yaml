@@ -1,11 +1,16 @@
+exclude: |
+  (?x)^(
+      docs/.*|
+      alembic/.*|
+      .*.sql
+  )$
+
 repos:
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.1.9
     hooks:
       - id: forbid-crlf
-        exclude: docs
       - id: remove-crlf
-        exclude: docs
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
     hooks:
@@ -31,10 +36,8 @@ repos:
         entry: poetry run flake8
         language: system
         types: [python]
-        exclude: docs
       - id: mypy
         name: mypy
         entry: poetry run mypy --ignore-missing-imports
         language: system
         types: [python]
-        exclude: docs
