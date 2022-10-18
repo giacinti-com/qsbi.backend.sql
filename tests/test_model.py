@@ -33,5 +33,5 @@ def test_all_models(get_test_session, example_json, tmp_path) -> None:
                 stmt = select(models.__dict__[mod])
                 result = sess.execute(stmt)
                 for acc in result.scalars():
-                    print(json.dumps(acc.as_dict(), default=str), file=file)
+                    print(json.dumps(acc.as_dict(), default=str, ensure_ascii=False), file=file)
     assert filecmp.cmp(example_json, output, False)
